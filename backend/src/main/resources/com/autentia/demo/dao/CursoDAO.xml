@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.autentia.demo.dao.CursoDAO">
+
+	<resultMap id="CursoResult" type="Curso">
+		<id column="id" property="id" />
+		<result column="activo" property="activo" />
+		<result column="horas" property="horas" />
+		<result column="nivel" property="nivel" />
+		<association property="profesor" column="idProfesor"
+		select="com.autentia.demo.dao.ProfesorDAO.load"/>
+	</resultMap> 
+
+	<select id="find" resultMap="CursoResult">
+		select *
+		from Curso
+		order by titulo
+	</select>
+	
+	<select id="load" parameterType="int" resultMap="CursoResult">
+		select *
+		from Curso
+		where id = #{value}
+	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert into Curso(titulo, activo, horas, nivel, idProfesor)
+		values (#{titulo}, #{activo}, #{horas}, #{nivel}, #{profesor.id})
+	</insert>
+	
+	<update id="update">
+		update Curso set
+			titulo = #{titulo},
+			activo = #{activo},
+			horas = #{horas},
+			nivel = #{nivel},
+			idProfesor = #{profesor.id}
+		where id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from Curso where id = #{value}
+	</delete>
+
+</mapper>

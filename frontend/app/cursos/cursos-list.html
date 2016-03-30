@@ -1,0 +1,31 @@
+<div>
+  <h2>Catálogo de cursos</h2>
+
+  <table st-table="cursosSafe" st-safe-src="cursos" class="table table-striped">
+    <thead>
+      <tr>
+        <th st-sort="titulo">Título</th>
+        <th st-sort="nivel">Nivel</th>
+        <th st-sort="horas" st-skip-natural="true">Horas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="curso in cursosSafe | filter:{activo: true}">
+        <td><a href="#/cursos/{{curso.id}}">{{curso.titulo}}</a></td>
+        <td>{{curso.nivel}}</td>
+        <td>{{curso.horas}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+			<tr>
+				<td colspan="3" class="text-center">
+					<div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+				</td>
+			</tr>
+		</tfoot>
+  </table>
+
+  <button type="button" click-view="/cursos/0" class="btn btn-sm btn-success">
+  			<i class="glyphicon glyphicon-plus"></i> Nuevo curso
+	</button>
+</div>

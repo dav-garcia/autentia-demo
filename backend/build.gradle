@@ -1,0 +1,64 @@
+plugins {
+  id "java"
+  id "war"
+  id "eclipse-wtp"
+  id "jacoco"
+  id "org.sonarqube" version "1.2"
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile "org.springframework:spring-webmvc:4.2.+"
+    compile "org.springframework:spring-jdbc:4.2.+"
+    compile "com.fasterxml.jackson.core:jackson-databind:2.6.+"
+    compile "org.mybatis:mybatis:3.3.+"
+    compile "org.mybatis:mybatis-spring:1.2.+"
+    compile "org.hsqldb:hsqldb:2.3.+"
+
+    providedCompile "javax.servlet:javax.servlet-api:3.1.+"
+
+    testCompile "junit:junit:4.12"
+    testCompile "org.mockito:mockito-all:1.10.+"
+}
+
+eclipse {
+  wtp {
+    component {
+      contextPath = "api"
+      deployName = "autentia-backend-api"
+    }
+  }
+}
+
+war {
+	from "../frontend/app"
+	from("../frontend/bower_components") {
+		into "bower_components"		
+	}
+}
+
+sonarqube {
+  properties {
+    property "sonar.host.url", "http://localhost:9000"
+    property "sonar.login", "admin"
+    property "sonar.password", "admin"
+    property "sonar.scm.disabled", true
+    property "sonar.projectName", "Autentia"
+    property "sonar.modules", "frontend, backend"
+    property "frontend.sonar.language", "js"
+    property "frontend.sonar.projectBasedir", "../frontend/app"
+    property "backend.sonar.language", "java"
+    property "backend.sonar.projectBaseDir", "src"
+    //properties["sonar.sources"] += "/Users/dgarciagil/Documents/Autentia/frontend/app"
+  }
+}
+
+task deploy(type: Copy) {
+	from "."
+    into "/usr/local/Cellar/tomcat/8.0.32/libexec/conf/Catalina/localhost"
+    include "ROOT.xml"
+}

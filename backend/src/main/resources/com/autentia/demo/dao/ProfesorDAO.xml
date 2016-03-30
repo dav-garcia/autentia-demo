@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.autentia.demo.dao.ProfesorDAO">
+
+  <select id="find" resultType="Profesor">
+  	select *
+  	from Profesor
+  	order by nombre
+  </select>
+
+  <select id="load" parameterType="int" resultType="Profesor">
+  	select *
+  	from Profesor
+    where id = #{value}
+  </select>
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+  	insert into Profesor(nombre)
+  	values (#{nombre})
+  </insert>
+
+  <update id="update">
+  	update Profesor set
+  		nombre = #{nombre}
+	where id = #{id}
+  </update>
+
+  <delete id="delete" parameterType="int">
+    delete from Profesor where id = #{value}
+  </delete>
+
+</mapper>

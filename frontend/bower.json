@@ -1,0 +1,27 @@
+{
+  "name": "node-test",
+  "description": "Simple NodeJS test",
+  "main": "server.js",
+  "authors": [
+    "David"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3",
+    "angular": "~1.4",
+    "angular-mocks": "~1.4",
+    "angular-resource": "~1.4",
+    "angular-route": "~1.4",
+    "angular-smart-table": "~2.1"
+  }
+}

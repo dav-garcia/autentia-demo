@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="autentiaDemoApp">
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App de demo Autentia</title>
+
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style type="text/css">
+    .form-control {
+      width: auto !important
+    }
+  </style>
+
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+
+  <script src="app.js"></script>
+  <script src="cursos/cursosControllers.js"></script>
+  <script src="cursos/cursosServices.js"></script>
+  <script src="profesores/profesoresControllers.js"></script>
+  <script src="profesores/profesoresServices.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#/cursos">Cursos</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" ng-view></div>
+</body>
+</html>

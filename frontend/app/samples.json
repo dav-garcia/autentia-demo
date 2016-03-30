@@ -1,0 +1,6 @@
+[
+  {"id": 4, "titulo": "Desarrollo web", "nivel": 1, "horas": 30, "activo": true},
+  {"id": 3, "titulo": "Introducción a AngularJS", "nivel": 2, "horas": 40, "activo": true},
+  {"id": 2, "titulo": "Novedades en Spring 3", "nivel": 3, "horas": 20, "activo": true},
+  {"id": 1, "titulo": "COBOL para expertos", "nivel": 3, "horas": 100, "activo": false}
+]

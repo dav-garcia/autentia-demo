@@ -1,0 +1,47 @@
+<h2>Detalle de curso</h2>
+
+<form ng-submit="onSubmit()" class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label for="titulo" class="control-label col-lg-2">Título:</label>
+      <div class="col-lg-10">
+        <input id="titulo" type="text" ng-model="curso.titulo" autofocus
+        class="form-control" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="profesor" class="control-label col-lg-2">Profesor:</label>
+      <div class="col-lg-10">
+        <select id="profesor" ng-model="curso.profesor"
+        ng-options="profesor as profesor.nombre for profesor in profesores track by profesor.id"
+        class="form-control"></select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="activo" class="control-label col-lg-2">Activo:</label>
+      <div class="col-lg-10">
+        <input id="activo" type="checkbox" ng-model="curso.activo"
+        class="form-control" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nivel" class="control-label col-lg-2">Nivel:</label>
+      <div class="col-lg-10">
+        <select id="nivel" ng-model="curso.nivel"
+        ng-options="nivel for nivel in niveles"
+        class="form-control"></select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="horas" class="control-label col-lg-2">Horas:</label>
+      <div class="col-lg-10">
+        <input id="horas" type="number" ng-model="curso.horas"
+        class="form-control" />
+      </div>
+    </div>
+  </fieldset>
+
+  <button type="submit" class="btn btn-sm btn-success">
+  			<i class="glyphicon glyphicon-floppy-disk"></i> Guardar
+	</button>
+</form>
